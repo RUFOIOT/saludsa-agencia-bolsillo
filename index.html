@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Tu Agencia de Marketing de Bolsillo · Pep & Zizu · Saludsa IA</title>
+<style>
+:root{
+  --r:#E30613;--y:#F5C518;--g:#00D48C;--b:#2563EB;--p:#7C3AED;
+  --dk:#06060A;--cd:#0C0C14;--br:#181824;--tx:#EAEAEA;--mu:#52526A;--wh:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--dk);color:var(--tx);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--r);border-radius:2px}
+
+#bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--r),var(--y),var(--g));z-index:9000;transition:width .08s;pointer-events:none}
+
+nav{position:fixed;inset:0 0 auto;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:.85rem 4rem;background:rgba(6,6,10,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--br)}
+.nlogo{font-size:.82rem;font-weight:800;letter-spacing:1px;color:rgba(255,255,255,.25)}.nlogo b{color:var(--r)}
+.npills{display:flex;gap:.25rem;background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:25px;padding:.2rem}
+.np{padding:.3rem 1rem;border-radius:20px;font-size:.68rem;font-weight:700;color:var(--mu);text-decoration:none;transition:all .2s}
+.np.a,.np:hover{background:rgba(227,6,19,.18);color:var(--r)}
+.nright{display:flex;gap:.6rem;align-items:center}
+.nbadge{display:inline-flex;align-items:center;gap:.35rem;font-size:.6rem;font-weight:700;padding:.25rem .7rem;border-radius:20px}
+.nb-g{background:rgba(0,212,140,.08);border:1px solid rgba(0,212,140,.22);color:var(--g)}
+.nb-y{background:rgba(245,197,24,.08);border:1px solid rgba(245,197,24,.22);color:var(--y)}
+.nblink{width:5px;height:5px;border-radius:50%;animation:bl 1.4s infinite}
+.nb-g .nblink{background:var(--g)}.nb-y .nblink{background:var(--y)}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.2}}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.rv.vis{opacity:1;transform:none}
+.rv.lft{transform:translateX(-26px)}.rv.rgt{transform:translateX(26px)}
+.rv.vis.lft,.rv.vis.rgt{transform:none}
+
+/* ══ HERO ══ */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hbg{position:absolute;inset:0}
+.hbg img{width:100%;height:100%;object-fit:cover;filter:brightness(.08) saturate(.25)}
+.hbg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 12% 60%,rgba(227,6,19,.2),transparent 52%),radial-gradient(ellipse at 88% 18%,rgba(37,99,235,.12),transparent 48%),linear-gradient(180deg,transparent 55%,var(--dk))}
+.hinner{position:relative;z-index:2;max-width:1240px;width:100%;margin:0 auto;padding:9rem 4rem 5rem;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center}
+.htag{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);border-radius:20px;padding:.35rem 1.2rem;font-size:.6rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:2.5rem}
+.htag span{width:5px;height:5px;background:var(--r);border-radius:50%;animation:bl 1.4s infinite}
+h1{font-size:clamp(3rem,8vw,8rem);font-weight:900;line-height:.88;letter-spacing:-4px;margin-bottom:1.5rem}
+h1 .s1{display:block;font-size:.42em;color:rgba(255,255,255,.55);letter-spacing:-1px;font-weight:700;margin-bottom:.2rem}
+h1 .s2{display:block;color:var(--wh)}
+h1 .s3{display:block;background:linear-gradient(135deg,var(--r),var(--y));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hsub{font-size:1.15rem;color:rgba(255,255,255,.35);font-style:italic;margin-bottom:1rem}
+.hdesc{font-size:.93rem;color:var(--mu);line-height:1.85;max-width:520px;margin-bottom:2.5rem}
+.hchips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:3rem}
+.chip{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:.22rem .7rem;border-radius:20px;margin:.1rem}
+.cr{background:rgba(227,6,19,.12);color:var(--r);border:1px solid rgba(227,6,19,.25)}
+.cg{background:rgba(0,212,140,.08);color:var(--g);border:1px solid rgba(0,212,140,.2)}
+.cb{background:rgba(37,99,235,.12);color:var(--b);border:1px solid rgba(37,99,235,.25)}
+.cy{background:rgba(245,197,24,.08);color:var(--y);border:1px solid rgba(245,197,24,.2)}
+.cp{background:rgba(124,58,237,.12);color:var(--p);border:1px solid rgba(124,58,237,.25)}
+.hstats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);padding:1.75rem 0}
+.hst{text-align:center;border-right:1px solid rgba(255,255,255,.06)}
+.hst:last-child{border-right:none}
+.hst .hv{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;background:linear-gradient(135deg,var(--wh),var(--r));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.hst .hl{font-size:.58rem;color:var(--mu);text-transform:uppercase;letter-spacing:1.5px;margin-top:.3rem}
+
+/* HERO RIGHT — AGENT STACK */
+.agent-stack{display:flex;flex-direction:column;gap:1rem}
+.acard{border-radius:20px;overflow:hidden;position:relative}
+.acard img{width:100%;height:210px;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.42) saturate(.6)}
+.acard:hover img{transform:scale(1.04);filter:brightness(.6) saturate(.9)}
+.acard-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.9))}
+.acard-ct{position:absolute;bottom:0;left:0;right:0;padding:1.4rem}
+.acard-tag{font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:.22rem .65rem;border-radius:20px;display:inline-block;margin-bottom:.55rem}
+.tag-pep{background:rgba(227,6,19,.25);color:var(--r);border:1px solid rgba(227,6,19,.4)}
+.tag-zizu{background:rgba(245,197,24,.2);color:var(--y);border:1px solid rgba(245,197,24,.35)}
+.acard-name{font-size:1.8rem;font-weight:900;color:var(--wh);letter-spacing:-1px;line-height:1}
+.acard-desc{font-size:.75rem;color:rgba(255,255,255,.42);margin-top:.3rem}
+
+/* ══ SEC SHELL ══ */
+.sec{padding:5.5rem 4rem}
+.inner{max-width:1200px;margin:0 auto}
+.inner-sm{max-width:1000px;margin:0 auto}
+.lbl{font-size:.58rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:.7rem}
+.lr{color:var(--r)}.ly{color:var(--y)}.lg{color:var(--g)}.lb{color:var(--b)}.lp{color:var(--p)}
+h2{font-size:clamp(2.2rem,4.5vw,4rem);font-weight:900;line-height:.95;letter-spacing:-2px;margin-bottom:.75rem}
+h2 em{font-style:normal;color:var(--y)}
+h2 span{color:var(--r)}
+h3{font-size:1.3rem;font-weight:800;color:var(--wh)}
+h4{font-size:.95rem;font-weight:700;color:var(--wh);margin-bottom:.4rem}
+p{color:var(--mu);font-size:.9rem;line-height:1.75}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+
+.card{background:var(--cd);border:1px solid var(--br);border-radius:16px;padding:1.5rem;transition:all .2s}
+.card:hover{border-color:rgba(255,255,255,.07);transform:translateY(-2px)}
+.card-r{border-color:rgba(227,6,19,.2);background:rgba(227,6,19,.03)}
+.card-g{border-color:rgba(0,212,140,.18);background:rgba(0,212,140,.025)}
+.card-y{border-color:rgba(245,197,24,.18);background:rgba(245,197,24,.025)}
+.card-b{border-color:rgba(37,99,235,.18);background:rgba(37,99,235,.025)}
+
+/* PHOTO CARD */
+.pc{border-radius:16px;overflow:hidden;position:relative;background:var(--cd)}
+.pc img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.55) saturate(.7)}
+.pc:hover img{transform:scale(1.05);filter:brightness(.75) saturate(1)}
+.pcov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.88))}
+/* FLOW STEPS */
+.fstep{background:var(--cd);border:1px solid var(--br);border-radius:12px;padding:.85rem .7rem;text-align:center;cursor:pointer;transition:all .22s}
+.fstep:hover,.fstep.on{background:rgba(227,6,19,.08);border-color:rgba(227,6,19,.4);transform:translateY(-3px)}
+.sn{width:22px;height:22px;border-radius:50%;background:var(--r);color:#fff;font-size:.6rem;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto .4rem}
+.si{font-size:1rem;margin-bottom:.25rem}.st{font-size:.62rem;font-weight:700;color:var(--tx);line-height:1.3}
+.finfo{background:rgba(227,6,19,.05);border:1px solid rgba(227,6,19,.18);border-radius:10px;padding:.9rem 1.1rem;font-size:.82rem;color:var(--mu);display:none;line-height:1.7;margin-top:.75rem}
+.finfo.show{display:block}
+/* PHONE */
+.phone{width:235px;border-radius:28px;background:#10101c;border:2px solid #1c1c30;overflow:hidden;box-shadow:0 35px 90px rgba(0,0,0,.7);flex-shrink:0}
+.ph-head{background:#12192a;padding:.8rem 1rem;display:flex;align-items:center;gap:.65rem;border-bottom:1px solid #1c2a3a}
+.ph-av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--r),#ff6b6b);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.75rem;color:#fff;flex-shrink:0}
+.ph-name{font-size:.75rem;font-weight:700;color:#fff}.ph-st{font-size:.58rem;color:#4ade80}
+.pb{padding:.65rem;display:flex;flex-direction:column;gap:.4rem}
+.bm{max-width:92%;padding:.48rem .72rem;border-radius:11px;font-size:.67rem;line-height:1.55}
+.bmu{background:#1c3a58;color:#e0e0f0;align-self:flex-end;border-bottom-right-radius:3px}
+.bmb{background:#131c2a;color:#b0b0c8;align-self:flex-start;border-bottom-left-radius:3px}
+.bmbn{font-size:.55rem;font-weight:700;color:var(--r);margin-bottom:.15rem}
+.bmt{font-size:.5rem;color:rgba(255,255,255,.18);text-align:right;margin-top:.15rem}
+.bmtag{display:inline-block;background:rgba(0,212,140,.14);color:var(--g);font-size:.55rem;font-weight:700;padding:.1rem .38rem;border-radius:4px;margin-bottom:.15rem}
+.pct{position:absolute;bottom:0;left:0;right:0;padding:1.25rem 1.5rem}
+.pct h4{margin-bottom:.2rem}
+.pct p{font-size:.75rem;color:rgba(255,255,255,.42);margin:0}
+
+/* FULL BAND */
+.band{width:100%;height:360px;position:relative;overflow:hidden}
+.band img{width:100%;height:100%;object-fit:cover;filter:brightness(.14) saturate(.3)}
+.band::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,var(--dk) 0%,transparent 22%,transparent 78%,var(--dk))}
+.band-cnt{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem}
+.band-cnt h2{font-size:clamp(2.8rem,7vw,7rem);letter-spacing:-3px;color:var(--wh)}
+.band-cnt p{color:rgba(255,255,255,.3);margin-top:.75rem;font-size:.92rem}
+
+/* STAT */
+.sc{text-align:center;padding:1.75rem;background:var(--cd);border:1px solid var(--br);border-radius:16px}
+.sc .sv{font-size:clamp(2rem,4vw,3.5rem);font-weight:900;line-height:1}
+.sc .sl{font-size:.6rem;color:var(--mu);text-transform:uppercase;letter-spacing:1.5px;margin-top:.35rem}
+.sc .ss{font-size:.75rem;color:var(--mu);margin-top:.3rem}
+
+.bn{text-align:center;padding:1.4rem;background:var(--cd);border:1px solid var(--br);border-radius:14px}
+.bn .bv{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1}
+.bn .bl{font-size:.58rem;color:var(--mu);text-transform:uppercase;letter-spacing:1.5px;margin-top:.3rem}
+
+/* CALC */
+.calc{background:#07070E;border:1px solid var(--br);border-radius:12px;padding:1.25rem;font-size:.82rem}
+.crow{display:flex;justify-content:space-between;align-items:baseline;padding:.28rem 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.crow:last-child{border-bottom:none;padding-top:.55rem;margin-top:.3rem;border-top:1px solid rgba(255,255,255,.1)}
+.crow.total{color:var(--wh);font-weight:700}
+.cl2{color:var(--mu)}
+.cv{font-weight:700}
+.cv-r{color:var(--r)}.cv-g{color:var(--g)}.cv-y{color:var(--y)}.cv-b{color:var(--b)}.cv-w{color:var(--wh)}
+
+/* FUNNEL */
+.funnel{display:flex;flex-direction:column;gap:.5rem;margin-top:1rem}
+.fl{border-radius:10px;padding:.75rem 1.1rem;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden;border:1px solid var(--br)}
+.flbg{position:absolute;left:0;top:0;bottom:0;opacity:.1;border-radius:10px;transition:width 1.5s ease}
+.fl-n{font-size:.82rem;font-weight:700;color:var(--tx);position:relative;z-index:1}
+.fl-s{font-size:.68rem;color:var(--mu);position:relative;z-index:1}
+.fl-v{font-size:.95rem;font-weight:900;position:relative;z-index:1}
+
+/* IMAGE STRIP */
+.istrip{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin:1.5rem 0}
+.is{border-radius:13px;overflow:hidden;height:185px;position:relative}
+.is img{width:100%;height:100%;object-fit:cover;transition:transform .35s;filter:brightness(.58) saturate(.7)}
+.is:hover img{transform:scale(1.06);filter:brightness(.78) saturate(1)}
+.is-lb{position:absolute;bottom:.75rem;left:.9rem;font-size:.7rem;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+
+/* MOSAIC */
+.mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 175px;gap:.75rem}
+.m1{grid-row:1/3;border-radius:16px;overflow:hidden;position:relative}
+.m2,.m3{border-radius:16px;overflow:hidden;position:relative}
+.mosaic img{width:100%;height:100%;object-fit:cover;transition:transform .4s;filter:brightness(.55) saturate(.7)}
+.mosaic div:hover img{transform:scale(1.05);filter:brightness(.78) saturate(1)}
+.mlb{position:absolute;inset:0;display:flex;align-items:flex-end;padding:.9rem;background:linear-gradient(180deg,transparent 52%,rgba(0,0,0,.75))}
+.mlb span{font-size:.72rem;font-weight:700;color:#fff}
+
+/* AGENT DETAIL CARD */
+.agdet{background:var(--cd);border:1px solid var(--br);border-radius:20px;overflow:hidden}
+.agdet-img{height:260px;position:relative}
+.agdet-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.45) saturate(.65)}
+.agdet-img .ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.92))}
+.agdet-img .agct{position:absolute;bottom:0;left:0;right:0;padding:1.5rem}
+.agdet-img .agtag{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:.22rem .65rem;border-radius:20px;margin-bottom:.6rem}
+.agdet-img .agname{font-size:2.2rem;font-weight:900;color:var(--wh);letter-spacing:-1.5px;line-height:1}
+.agdet-img .agslogan{font-size:.8rem;color:rgba(255,255,255,.42);margin-top:.3rem}
+.agdet-body{padding:1.5rem}
+.feat-row{display:flex;align-items:flex-start;gap:.85rem;padding:.75rem 0;border-bottom:1px solid var(--br)}
+.feat-row:last-child{border-bottom:none}
+.feat-ico{font-size:1.05rem;flex-shrink:0;margin-top:.05rem;width:24px;text-align:center}
+.feat-title{font-size:.85rem;font-weight:700;color:var(--wh);margin-bottom:.18rem}
+.feat-desc{font-size:.78rem;color:var(--mu);line-height:1.6;margin:0}
+
+/* QUOTE */
+.qt{padding:2rem 2.5rem 2rem 3rem;border-left:4px solid var(--y);background:rgba(245,197,24,.04);border-radius:0 14px 14px 0;position:relative;overflow:hidden;margin:1.25rem 0}
+.qt::before{content:'"';position:absolute;top:-2rem;left:1.2rem;font-size:12rem;opacity:.035;font-family:Georgia,serif;color:var(--wh)}
+.qt .qp{font-size:clamp(.95rem,2vw,1.35rem);font-weight:800;color:var(--wh);line-height:1.45;position:relative}
+.qt .qp em{font-style:normal;color:var(--y)}
+.qt .qa{font-size:.72rem;color:var(--mu);margin-top:1rem}
+.qt-r{border-left-color:var(--r);background:rgba(227,6,19,.04)}
+.qt-r .qp em{color:var(--r)}
+
+/* NOTE */
+.note{border-left:3px solid;border-radius:0 9px 9px 0;padding:.6rem .9rem;margin:.75rem 0;font-size:.79rem;color:var(--mu);line-height:1.6}
+.note strong{font-weight:700}
+.nr{border-color:var(--r);background:rgba(227,6,19,.045)}.nr strong{color:var(--r)}
+.ng{border-color:var(--g);background:rgba(0,212,140,.04)}.ng strong{color:var(--g)}
+.ny{border-color:var(--y);background:rgba(245,197,24,.04)}.ny strong{color:var(--y)}
+.nb2{border-color:var(--b);background:rgba(37,99,235,.04)}.nb2 strong{color:var(--b)}
+
+/* ROI FINAL BOX */
+.roi-box{background:linear-gradient(135deg,rgba(0,212,140,.08),rgba(0,212,140,.03));border:1px solid rgba(0,212,140,.25);border-radius:20px;padding:2.5rem}
+.roi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:center;margin-top:1.75rem}
+.roi-grid .rv2{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1}
+.roi-grid .rl{font-size:.6rem;color:var(--mu);text-transform:uppercase;letter-spacing:1.5px;margin-top:.35rem}
+.roi-sep{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.75rem;padding-top:1.75rem;border-top:1px solid rgba(255,255,255,.07);text-align:center}
+.rsv{font-size:1.5rem;font-weight:900;line-height:1}
+.rsl{font-size:.58rem;color:var(--mu);text-transform:uppercase;letter-spacing:1.5px;margin-top:.25rem}
+
+/* WATERFALL */
+.wf-wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem;align-items:end;margin:2rem 0}
+.wf-col{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.wfb{width:100%;border-radius:8px 8px 0 0;transition:height 1.5s cubic-bezier(.22,1,.36,1)}
+.wfl{font-size:.65rem;font-weight:700;color:var(--mu);text-align:center;line-height:1.4}
+.wfv{font-size:.82rem;font-weight:900;text-align:center}
+
+/* TIMELINE H */
+.tl-h{display:grid;grid-template-columns:repeat(8,1fr);gap:.35rem;margin-top:1rem}
+.tw{border-radius:7px;padding:.5rem .3rem;text-align:center;font-size:.6rem;font-weight:700;color:var(--wh)}
+.tw-s{background:rgba(37,99,235,.25);border:1px solid rgba(37,99,235,.4)}
+.tw-t{background:rgba(124,58,237,.25);border:1px solid rgba(124,58,237,.4)}
+.tw-g{background:rgba(0,212,140,.2);border:1px solid rgba(0,212,140,.35)}
+
+/* COMPARE TABLE */
+.cmp{width:100%;border-collapse:collapse;font-size:.84rem;margin-top:1.5rem}
+.cmp thead tr{background:#08080F}
+.cmp th{padding:.8rem 1rem;text-align:left;font-weight:700;border-bottom:1px solid var(--br);font-size:.68rem;text-transform:uppercase;letter-spacing:1px}
+.th-cat{color:var(--mu);width:190px}
+.th-now{color:var(--r)}.th-ai{color:var(--g)}.th-d{color:var(--y)}
+.cmp td{padding:.75rem 1rem;border-bottom:1px solid var(--br);vertical-align:top;line-height:1.55}
+.cmp tr:last-child td{border-bottom:none}
+.cmp tr:hover td{background:rgba(255,255,255,.012)}
+.tcat{font-size:.8rem;font-weight:700;color:var(--tx)}
+.tbad{font-size:.78rem;color:rgba(210,60,60,.9)}
+.tgood{font-size:.78rem;color:rgba(0,212,140,.9)}
+.tdelta{font-size:.8rem;font-weight:700;color:var(--y);white-space:nowrap}
+
+/* CLOSING */
+.closing{background:linear-gradient(135deg,rgba(227,6,19,.1),rgba(245,197,24,.06));border-top:1px solid rgba(227,6,19,.2);padding:5.5rem 4rem;text-align:center}
+.closing h2{font-size:clamp(2.5rem,7vw,7rem);letter-spacing:-3px}
+.cl-sub{font-size:.98rem;color:rgba(255,255,255,.3);margin-top:1rem;max-width:700px;margin-left:auto;margin-right:auto}
+
+footer{padding:2.5rem 4rem;border-top:1px solid var(--br);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+footer p{font-size:.72rem;color:var(--mu)}
+footer strong{color:var(--y)}
+
+@media(max-width:1024px){
+  nav{padding:.8rem 1.5rem}.sec{padding:4rem 1.5rem}
+  .hinner{grid-template-columns:1fr;padding:8rem 1.5rem 4rem}
+  .agent-stack{display:none}.g2,.g3,.g4{grid-template-columns:1fr}
+  .hstats{grid-template-columns:repeat(3,1fr)}.mosaic{grid-template-rows:unset}
+  .m1{grid-row:unset;height:200px}.m2,.m3{height:180px}
+  .istrip{grid-template-columns:1fr 1fr}.tl-h{grid-template-columns:repeat(4,1fr)}
+  .roi-grid,.roi-sep{grid-template-columns:1fr 1fr}
+  .closing{padding:4rem 1.5rem}
+  footer{padding:2rem 1.5rem;flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<!-- ════ NAV ════ -->
+<nav>
+  <div class="nlogo">⚕ <b>Saludsa</b> · Tu Agencia de Marketing de Bolsillo</div>
+  <div class="npills">
+    <a class="np a" href="#hero">Inicio</a>
+    <a class="np" href="#pep">Pep</a>
+    <a class="np" href="#zizu">Zizu</a>
+    <a class="np" href="#situacion">Situación</a>
+    <a class="np" href="#roi">ROI</a>
+    <a class="np" href="#desarrollo">Desarrollo</a>
+  </div>
+  <div class="nright">
+    <div class="nbadge nb-g"><div class="nblink"></div>MVP Activo</div>
+    <div class="nbadge nb-y"><div class="nblink"></div>Saludsa IA 2025</div>
+  </div>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section class="hero" id="hero">
+  <div class="hbg">
+    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1800&q=80&auto=format&fit=crop" alt="marketing team"/>
+  </div>
+  <div class="hinner">
+    <div>
+      <div class="htag"><span></span>Concurso Interno IA · Saludsa 2025 · Confidencial</div>
+      <h1>
+        <span class="s1">Tu agencia de marketing</span>
+        <span class="s2">de bolsillo.</span>
+        <span class="s3">Vende con IA.</span>
+      </h1>
+      <p class="hsub">Pep el estratega. Zizu el creativo. Tú, el campeón de ventas.</p>
+      <p class="hdesc">Dos agentes de inteligencia artificial que convierten a cualquier Representante de Negocios de Saludsa en un experto de marketing digital. Sin curva de aprendizaje. Sin agencia externa. Sin excusas.</p>
+      <div class="hchips">
+        <span class="chip cr">Pep · El Estratega</span>
+        <span class="chip cy">Zizu · El Creativo</span>
+        <span class="chip cg">ROI 32x demostrado</span>
+        <span class="chip cb">8 semanas al aire</span>
+        <span class="chip cp">400 RNs · fuerza total</span>
+      </div>
+      <div class="hstats">
+        <div class="hst"><div class="hv">+100</div><div class="hl">RNs nuevos en digital</div></div>
+        <div class="hst"><div class="hv">+128</div><div class="hl">Ventas nuevas / mes</div></div>
+        <div class="hst"><div class="hv">$2.49M</div><div class="hl">Valor bruto anual</div></div>
+      </div>
+    </div>
+
+    <!-- DERECHA: CUÁNTO GENERA Y EN CUÁNTO TIEMPO -->
+    <div class="rv rgt" style="display:flex;flex-direction:column;gap:.85rem">
+      <div style="background:rgba(0,212,140,.07);border:1px solid rgba(0,212,140,.28);border-radius:18px;padding:1.6rem;text-align:center">
+        <div style="font-size:.58rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--g);margin-bottom:.5rem">Genera al año</div>
+        <div style="font-size:3.8rem;font-weight:900;background:linear-gradient(135deg,var(--wh),var(--g));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1">$2.49M</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.35);margin-top:.4rem">Valor bruto incremental · 40% fuerza comercial activa</div>
+      </div>
+      <div class="g2" style="gap:.85rem">
+        <div style="background:rgba(245,197,24,.07);border:1px solid rgba(245,197,24,.25);border-radius:14px;padding:1.3rem;text-align:center">
+          <div style="font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--y);margin-bottom:.4rem">Beneficio neto año 1</div>
+          <div style="font-size:2.2rem;font-weight:900;color:var(--y);line-height:1">$498K</div>
+          <div style="font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.3rem">Margen conservador 20%</div>
+        </div>
+        <div style="background:rgba(227,6,19,.07);border:1px solid rgba(227,6,19,.25);border-radius:14px;padding:1.3rem;text-align:center">
+          <div style="font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--r);margin-bottom:.4rem">ROI</div>
+          <div style="font-size:2.2rem;font-weight:900;color:var(--r);line-height:1">32x</div>
+          <div style="font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.3rem">Conservador sobre $15K</div>
+        </div>
+      </div>
+      <div class="g2" style="gap:.85rem">
+        <div style="background:var(--cd);border:1px solid var(--br);border-radius:14px;padding:1.3rem;text-align:center">
+          <div style="font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:.4rem">Inversión total</div>
+          <div style="font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--wh),var(--r));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1">$15K</div>
+          <div style="font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.3rem">Pago único · desarrollo</div>
+        </div>
+        <div style="background:var(--cd);border:1px solid var(--br);border-radius:14px;padding:1.3rem;text-align:center">
+          <div style="font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:.4rem">Payback</div>
+          <div style="font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--wh),var(--g));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1">11 días</div>
+          <div style="font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.3rem">Recuperación inversión</div>
+        </div>
+      </div>
+      <div style="background:rgba(37,99,235,.07);border:1px solid rgba(37,99,235,.25);border-radius:14px;padding:1.2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+        <div>
+          <div style="font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--b);margin-bottom:.3rem">Tiempo al aire</div>
+          <div style="font-size:1.4rem;font-weight:900;color:var(--wh)">8 sem. dev + 1 mes piloto</div>
+          <div style="font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.2rem">Sistema completo operando en ~11 semanas</div>
+        </div>
+        <div style="font-size:2rem;flex-shrink:0">🚀</div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FLUJO ════ -->
+<section class="sec" style="padding-top:3rem;padding-bottom:3rem;background:var(--cd);border-top:1px solid var(--br);border-bottom:1px solid var(--br)" id="flujo">
+<div class="inner-sm rv">
+  <span class="lbl lr">El Copiloto en Acción</span>
+  <h3 style="margin-bottom:.4rem">De una idea a campaña activa en minutos.</h3>
+  <p style="margin-bottom:0;max-width:620px">El copiloto actúa como la agencia digital de bolsillo del RN. Elimina por completo la fricción técnica y operativa del proceso de pauta.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:.45rem;margin:1.5rem 0" id="flowsteps">
+    <div class="fstep on" onclick="sf(this,0)"><div class="sn">1</div><div class="si">💬</div><div class="st">Idea</div></div>
+    <div class="fstep" onclick="sf(this,1)"><div class="sn">2</div><div class="si">🎤</div><div class="st">Voz</div></div>
+    <div class="fstep" onclick="sf(this,2)"><div class="sn">3</div><div class="si">🧠</div><div class="st">Pep</div></div>
+    <div class="fstep" onclick="sf(this,3)"><div class="sn">4</div><div class="si">🎨</div><div class="st">Zizu</div></div>
+    <div class="fstep" onclick="sf(this,4)"><div class="sn">5</div><div class="si">👁</div><div class="st">Preview</div></div>
+    <div class="fstep" onclick="sf(this,5)"><div class="sn">6</div><div class="si">✅</div><div class="st">Aprueba</div></div>
+    <div class="fstep" onclick="sf(this,6)"><div class="sn">7</div><div class="si">🚀</div><div class="st">Live</div></div>
+  </div>
+  <div id="finfo" class="finfo show">El RN describe en lenguaje natural lo que necesita — producto, ciudad, objetivo. Sin formularios. Sin tecnicismos. Voice notes también aceptados.</div>
+
+  <!-- DEMO REAL + PHONE -->
+  <div class="g2" style="margin-top:1.75rem;gap:2.5rem;align-items:center">
+    <div>
+      <h4 style="margin-bottom:.65rem">📱 Demo real — @pepguardiola2026_bot</h4>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem;margin-bottom:1rem">
+        <div style="border-radius:12px;overflow:hidden;height:150px;position:relative"><img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300&q=80&auto=format&fit=crop" alt="" style="width:100%;height:100%;object-fit:cover;filter:brightness(.6)"/><div style="position:absolute;bottom:.6rem;left:.7rem;font-size:.65rem;font-weight:700;color:#fff">Telegram</div></div>
+        <div style="border-radius:12px;overflow:hidden;height:150px;position:relative"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=300&q=80&auto=format&fit=crop" alt="" style="width:100%;height:100%;object-fit:cover;filter:brightness(.6)"/><div style="position:absolute;bottom:.6rem;left:.7rem;font-size:.65rem;font-weight:700;color:#fff">Claude IA</div></div>
+        <div style="border-radius:12px;overflow:hidden;height:150px;position:relative"><img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&q=80&auto=format&fit=crop" alt="" style="width:100%;height:100%;object-fit:cover;filter:brightness(.6)"/><div style="position:absolute;bottom:.6rem;left:.7rem;font-size:.65rem;font-weight:700;color:#fff">Zizu Crea</div></div>
+        <div style="border-radius:12px;overflow:hidden;height:150px;position:relative"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&q=80&auto=format&fit=crop" alt="" style="width:100%;height:100%;object-fit:cover;filter:brightness(.6)"/><div style="position:absolute;bottom:.6rem;left:.7rem;font-size:.65rem;font-weight:700;color:#fff">Meta Ads</div></div>
+      </div>
+      <!-- LÍNEA DE DISRUPCIÓN -->
+      <div style="background:rgba(245,197,24,.06);border:1px solid rgba(245,197,24,.22);border-radius:10px;padding:.85rem 1.1rem;display:flex;align-items:center;gap:.85rem">
+        <span style="font-size:1.2rem;flex-shrink:0">⚡</span>
+        <span style="font-size:.82rem;color:var(--tx);line-height:1.5"><strong style="color:var(--y)">Disrupte el proceso:</strong> Elimina las 5h/semana que cada RN dedica a configurar pauta manualmente. Operativo en <strong style="color:var(--y)">8 semanas de desarrollo + 1 mes de piloto</strong> — sistema completo al aire en 11 semanas.</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.4rem;margin-top:.85rem">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:.78rem;color:var(--mu)">8 cuentas Meta Ads conectadas</span><span style="display:inline-flex;align-items:center;gap:.38rem;font-size:.6rem;font-weight:700;padding:.2rem .62rem;border-radius:20px;background:rgba(0,212,140,.08);color:var(--g);border:1px solid rgba(0,212,140,.2)"><span style="width:5px;height:5px;border-radius:50%;background:var(--g);animation:bl 1.4s infinite"></span>Verificado</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:.78rem;color:var(--mu)">Campañas verificadas en Ads Manager</span><span style="display:inline-flex;align-items:center;gap:.38rem;font-size:.6rem;font-weight:700;padding:.2rem .62rem;border-radius:20px;background:rgba(0,212,140,.08);color:var(--g);border:1px solid rgba(0,212,140,.2)"><span style="width:5px;height:5px;border-radius:50%;background:var(--g);animation:bl 1.4s infinite"></span>Activo</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:.78rem;color:var(--mu)">Voice notes transcritos (Whisper)</span><span style="display:inline-flex;align-items:center;gap:.38rem;font-size:.6rem;font-weight:700;padding:.2rem .62rem;border-radius:20px;background:rgba(0,212,140,.08);color:var(--g);border:1px solid rgba(0,212,140,.2)"><span style="width:5px;height:5px;border-radius:50%;background:var(--g);animation:bl 1.4s infinite"></span>Activo</span></div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <div class="phone">
+        <div class="ph-head"><div class="ph-av">P</div><div><div class="ph-name">Pep + Zizu 🤖🎨</div><div class="ph-st">● activos · 24/7</div></div></div>
+        <div class="pb">
+          <div class="bm bmu">Quiero captar leads del plan Star Plus en Guayaquil, tengo $60<div class="bmt">18:21</div></div>
+          <div class="bm bmb"><div class="bmbn">Pep 📐</div>Perfecto — Zizu crea los artes.<br/>📍 GYE · 28–50 · salud/familia<br/>💰 $8/día × 7 días<br/>🎯 Generación de leads<br/>~48 leads · CPL ~$1.25<br/>¿Arrancamos?<div class="bmt">18:21</div></div>
+          <div class="bm bmu">Sí, lanzamos ✅<div class="bmt">18:22</div></div>
+          <div class="bm bmb"><div class="bmbn">Pep 📐</div><span class="bmtag">✅ LIVE EN META</span><br/>Arte de Zizu aprobado.<br/>Campaña corriendo 🚀<div class="bmt">18:22</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ════ PEP ════ -->
+<section class="sec" style="background:var(--cd);border-bottom:1px solid var(--br)" id="pep">
+<div class="inner">
+  <div class="g2 rv" style="gap:2.5rem">
+    <div class="agdet">
+      <div class="agdet-img">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80&auto=format&fit=crop" alt="Pep"/>
+        <div class="ov"></div>
+        <div class="agct">
+          <div class="agtag" style="background:rgba(227,6,19,.25);color:var(--r);border:1px solid rgba(227,6,19,.4)">El Estratega · El Arquitecto</div>
+          <div class="agname">Pep</div>
+          <div class="agslogan">"Convierte cualquier RN en el experto de pauta que nunca fue."</div>
+        </div>
+      </div>
+      <div class="agdet-body">
+        <div class="feat-row"><div class="feat-ico">🏗️</div><div><div class="feat-title">Arquitecto de campañas</div><p class="feat-desc">Recibe el brief en lenguaje natural — texto o voice note — y configura la campaña completa en Meta Ads: audiencia, objetivo, presupuesto, duración y formatos.</p></div></div>
+        <div class="feat-row"><div class="feat-ico">🎯</div><div><div class="feat-title">Segmentación profesional</div><p class="feat-desc">Define audiencias con precisión de experto: lookalike, intereses, comportamientos, exclusiones. Lo que una agencia cobra $500 hacer, Pep lo hace en segundos.</p></div></div>
+        <div class="feat-row"><div class="feat-ico">📊</div><div><div class="feat-title">Monitoreo y optimización diaria</div><p class="feat-desc">Lee métricas. Pausa anuncios de bajo rendimiento. Aprende de cada campaña para mejorar la siguiente. Sin intervención del RN.</p></div></div>
+        <div class="feat-row"><div class="feat-ico">✅</div><div><div class="feat-title">Aprobación humana siempre</div><p class="feat-desc">Ninguna campaña se lanza sin el "sí" explícito del RN. La aprobación humana es un requisito de diseño inamovible. El RN tiene control total.</p></div></div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:1.25rem">
+      <span class="lbl lr">El Estratega</span>
+      <h2 style="margin-bottom:.75rem">Pep convierte<br/>al RN en el<br/><em>experto que</em><br/>necesitaba ser.</h2>
+      <p style="max-width:440px">El RN escribe lo que necesita en lenguaje natural. Pep interpreta, valida y construye la campaña. El RN aprueba con un "sí". La pauta está en vivo en minutos.</p>
+
+      <div class="qt rv">
+        <p class="qp">"De 5 horas gestionando ads a <em>20 minutos</em> por semana. El RN vuelve a hacer lo que sabe: <em>vender.</em>"</p>
+      </div>
+
+      <div class="mosaic rv rgt">
+        <div class="m1"><img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80&auto=format&fit=crop" alt="Telegram"/><div class="mlb"><span>Brief en Telegram</span></div></div>
+        <div class="m2"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=400&q=80&auto=format&fit=crop" alt="IA"/><div class="mlb"><span>Claude Sonnet 4.6</span></div></div>
+        <div class="m3"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80&auto=format&fit=crop" alt="Meta Ads"/><div class="mlb"><span>Meta Ads Live</span></div></div>
+      </div>
+
+      <div class="g2" style="gap:.75rem;margin-top:.5rem">
+        <div class="bn"><div class="bv" style="background:linear-gradient(135deg,var(--wh),var(--r));-webkit-background-clip:text;-webkit-text-fill-color:transparent">-94%</div><div class="bl">Tiempo en pauta</div></div>
+        <div class="bn"><div class="bv" style="background:linear-gradient(135deg,var(--wh),var(--g));-webkit-background-clip:text;-webkit-text-fill-color:transparent">-50%</div><div class="bl">CPL estimado</div></div>
+        <div class="bn" style="grid-column:1/-1"><div class="bv" style="font-size:2rem;background:linear-gradient(135deg,var(--wh),var(--y));-webkit-background-clip:text;-webkit-text-fill-color:transparent">24/7</div><div class="bl">Disponible — Telegram + Voice Notes</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ════ ZIZU ════ -->
+<section class="sec" id="zizu">
+<div class="inner">
+  <div class="g2 rv" style="gap:2.5rem">
+    <div style="display:flex;flex-direction:column;gap:1.25rem">
+      <span class="lbl ly">El Creativo</span>
+      <h2 style="margin-bottom:.75rem">Zizu crea los<br/>artes y los<br/><em>copies que</em><br/>venden.</h2>
+      <p style="max-width:440px">Zizu no necesita un brief de diseño. Solo entiende el producto, la audiencia y el objetivo — y genera creatividades profesionales alineadas a la marca Saludsa en segundos.</p>
+
+      <div class="qt" style="border-left-color:var(--y)">
+        <p class="qp">"El RN ya no necesita diseñador, copywriter ni agencia creativa. <em>Zizu es los tres</em> — en segundos y por $0 adicional."</p>
+      </div>
+
+      <div class="istrip" style="grid-template-columns:1fr 1fr;margin:0">
+        <div class="is" style="height:160px"><img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400&q=80&auto=format&fit=crop" alt="creative"/><div class="is-lb">Artes publicitarios</div></div>
+        <div class="is" style="height:160px"><img src="https://images.unsplash.com/photo-1558655146-364adaf1fcc9?w=400&q=80&auto=format&fit=crop" alt="copy"/><div class="is-lb">Copy que convierte</div></div>
+      </div>
+
+      <div class="g2" style="gap:.75rem;margin-top:.5rem">
+        <div class="bn"><div class="bv" style="background:linear-gradient(135deg,var(--wh),var(--y));-webkit-background-clip:text;-webkit-text-fill-color:transparent">2+</div><div class="bl">Variantes A/B por campaña</div></div>
+        <div class="bn"><div class="bv" style="background:linear-gradient(135deg,var(--wh),var(--p));-webkit-background-clip:text;-webkit-text-fill-color:transparent">+60%</div><div class="bl">CTR estimado vs. actual</div></div>
+      </div>
+    </div>
+
+    <div class="agdet">
+      <div class="agdet-img">
+        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80&auto=format&fit=crop" alt="Zizu"/>
+        <div class="ov" style="background:linear-gradient(135deg,rgba(124,58,237,.4),transparent 55%),linear-gradient(180deg,transparent 25%,rgba(0,0,0,.92))"></div>
+        <div class="agct">
+          <div class="agtag" style="background:rgba(245,197,24,.2);color:var(--y);border:1px solid rgba(245,197,24,.35)">El Creativo · Arte & Copy</div>
+          <div class="agname">Zizu</div>
+          <div class="agslogan">"Crea los mejores artes y los copies que convierten."</div>
+        </div>
+      </div>
+      <div class="agdet-body">
+        <div class="feat-row"><div class="feat-ico">🎨</div><div><div class="feat-title">Artes publicitarios profesionales</div><p class="feat-desc">Genera imágenes para feed, stories y reels de Meta Ads alineadas a los guidelines de marca de Saludsa. Listas en segundos, no en días.</p></div></div>
+        <div class="feat-row"><div class="feat-ico">✍️</div><div><div class="feat-title">Copies que convierten</div><p class="feat-desc">Redacta textos persuasivos para cada producto Saludsa, audiencia objetivo y objetivo de campaña. Cada palabra tiene un propósito claro.</p></div></div>
+        <div class="feat-row"><div class="feat-ico">🔬</div><div><div class="feat-title">A/B Testing automático</div><p class="feat-desc">Genera mínimo 2 variantes creativas por campaña. El ganador escala, el perdedor se pausa. Optimización sin intervención humana.</p></div></div>
+        <div class="feat-row"><div class="feat-ico">🔄</div><div><div class="feat-title">Iteración al instante</div><p class="feat-desc">¿El RN quiere ajustar el tono, el color o el mensaje? Zizu regenera en segundos. Sin rondas de revisión. Sin esperas.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ════ BAND: SITUACIÓN REAL ════ -->
+<div class="band">
+  <img src="https://images.unsplash.com/photo-1551958219-acbc595d8747?w=1800&q=80&auto=format&fit=crop" alt="data"/>
+  <div class="band-cnt">
+    <p style="font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.75rem">Datos reales · Fuerza comercial Saludsa</p>
+    <h2 style="background:linear-gradient(135deg,var(--wh),var(--y));-webkit-background-clip:text;-webkit-text-fill-color:transparent">400 RNs.<br/>Solo 60 pautan.</h2>
+    <p>El 85% de la fuerza comercial tiene potencial digital sin activar. Pep y Zizu cambian eso.</p>
+  </div>
+</div>
+
+<!-- ════ SITUACIÓN ════ -->
+<section class="sec" id="situacion">
+<div class="inner rv">
+  <span class="lbl lr">Diagnóstico · Fuerza Comercial Saludsa</span>
+  <h2>El 85% de los RNs<br/>no pautan. No es falta<br/>de dinero — es falta de <em>guía.</em></h2>
+
+  <div class="g2" style="gap:2.5rem;margin-top:2rem;align-items:start">
+    <div>
+      <h4 style="margin-bottom:1rem;color:var(--r)">❌ Hoy — Sin el Copiloto</h4>
+      <div class="funnel" id="funnelNow">
+        <div class="fl" style="border-color:rgba(227,6,19,.2)"><div class="flbg" id="fb1" data-w="100" style="background:var(--r)"></div><div><div class="fl-n">Fuerza comercial total</div><div class="fl-s">RNs activos Saludsa</div></div><div class="fl-v" style="color:var(--wh)">400 RNs</div></div>
+        <div class="fl"><div class="flbg" id="fb2" data-w="15" style="background:var(--r)"></div><div><div class="fl-n">Pautar en Meta Ads</div><div class="fl-s">Con dinero propio · sin guía técnica</div></div><div class="fl-v" style="color:var(--r)">60 RNs · 15%</div></div>
+        <div class="fl"><div class="flbg" id="fb3" data-w="15" style="background:var(--mu)"></div><div><div class="fl-n">Leads / mes</div><div class="fl-s">16 leads × 60 RNs</div></div><div class="fl-v" style="color:var(--mu)">960 leads</div></div>
+        <div class="fl"><div class="flbg" id="fb4" data-w="1.2" style="background:var(--mu)"></div><div><div class="fl-n">Ventas atribuidas / mes</div><div class="fl-s">Conversión 8%</div></div><div class="fl-v" style="color:var(--mu)">~77 ventas</div></div>
+      </div>
+      <div class="note nr"><strong>Diagnóstico:</strong> El 85% de los RNs no pauta porque la barrera técnica y operativa es demasiado alta. No es falta de presupuesto — es falta de conocimiento. Pep y Zizu eliminan esa barrera completamente.</div>
+    </div>
+
+    <div>
+      <h4 style="margin-bottom:1rem;color:var(--g)">✅ Con el Copiloto — Meta 40%</h4>
+      <div class="funnel">
+        <div class="fl" style="border-color:rgba(0,212,140,.2)"><div class="flbg" style="background:var(--g);width:100%"></div><div><div class="fl-n">Fuerza comercial total</div><div class="fl-s">Sin cambios · mismo equipo</div></div><div class="fl-v" style="color:var(--wh)">400 RNs</div></div>
+        <div class="fl" style="border-color:rgba(0,212,140,.18)"><div class="flbg" style="background:var(--g);width:40%"></div><div><div class="fl-n">Pautar con Copiloto</div><div class="fl-s">Meta: barrera técnica eliminada</div></div><div class="fl-v" style="color:var(--g)">160 RNs · 40%</div></div>
+        <div class="fl" style="border-color:rgba(0,212,140,.14)"><div class="flbg" style="background:var(--g);width:40%"></div><div><div class="fl-n">Leads / mes</div><div class="fl-s">16 leads × 160 RNs</div></div><div class="fl-v" style="color:var(--g)">2,560 leads</div></div>
+        <div class="fl" style="border-color:rgba(0,212,140,.1)"><div class="flbg" style="background:var(--g);width:3.2%"></div><div><div class="fl-n">Ventas atribuidas / mes</div><div class="fl-s">Conversión 8% · misma tasa</div></div><div class="fl-v" style="color:var(--g)">~205 ventas</div></div>
+      </div>
+      <div style="background:rgba(0,212,140,.06);border:1px solid rgba(0,212,140,.2);border-radius:12px;padding:1.25rem;margin-top:1.1rem">
+        <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--mu);margin-bottom:.85rem;font-weight:700">Δ Incremento puro del Copiloto</div>
+        <div class="g2" style="gap:.75rem">
+          <div class="bn"><div class="bv" style="background:linear-gradient(135deg,var(--wh),var(--g));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:2rem">+100</div><div class="bl">RNs activos en digital</div></div>
+          <div class="bn"><div class="bv" style="background:linear-gradient(135deg,var(--wh),var(--g));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:2rem">+1,600</div><div class="bl">Leads extra / mes</div></div>
+          <div class="bn"><div class="bv" style="background:linear-gradient(135deg,var(--wh),var(--y));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:2rem">+128</div><div class="bl">Ventas nuevas / mes</div></div>
+          <div class="bn"><div class="bv" style="background:linear-gradient(135deg,var(--wh),var(--r));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:2rem">$1,620</div><div class="bl">LTV / cliente ($90×18m)</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARE TABLE -->
+  <div style="margin-top:2rem">
+    <h4 style="margin-bottom:.25rem">📊 Comparativo global</h4>
+    <table class="cmp">
+      <thead><tr><th class="th-cat">Indicador</th><th class="th-now">❌ Sin Copiloto</th><th class="th-ai">✅ Con Pep & Zizu</th><th class="th-d">Δ Delta</th></tr></thead>
+      <tbody>
+        <tr><td class="tcat">RNs pautando en digital</td><td class="tbad">60 (15%)</td><td class="tgood">160 (40%)</td><td class="tdelta">+167%</td></tr>
+        <tr><td class="tcat">Leads / mes totales</td><td class="tbad">960</td><td class="tgood">2,560</td><td class="tdelta">+1,600</td></tr>
+        <tr><td class="tcat">Ventas nuevas / mes</td><td class="tbad">~77</td><td class="tgood">~205</td><td class="tdelta">+128</td></tr>
+        <tr><td class="tcat">Tiempo en pauta / RN / sem.</td><td class="tbad">5–6 horas</td><td class="tgood">20 minutos</td><td class="tdelta">-94%</td></tr>
+        <tr><td class="tcat">Calidad creativa</td><td class="tbad">Imágenes de WhatsApp · texto genérico</td><td class="tgood">Artes profesionales + copy optimizado · A/B automático</td><td class="tdelta">CTR +60% est.</td></tr>
+        <tr><td class="tcat">Costo por lead (CPL)</td><td class="tbad">$3.75 (ineficiente)</td><td class="tgood">~$1.80 (optimizado)</td><td class="tdelta">-52%</td></tr>
+        <tr><td class="tcat">Cumplimiento marca Saludsa</td><td class="tbad">Variable · riesgo de desalineación</td><td class="tgood">100% alineado por diseño · guidelines embebidas</td><td class="tdelta">Riesgo → 0</td></tr>
+        <tr><td class="tcat">Valor bruto anual generado</td><td class="tbad">Base actual</td><td class="tgood">+$2.49M incremental</td><td class="tdelta">+$2.49M</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ════ ROI ════ -->
+<section class="sec" style="background:var(--cd);border-top:1px solid var(--br);border-bottom:1px solid var(--br)" id="roi">
+<div class="inner rv">
+  <span class="lbl lg">ROI · Datos Reales Saludsa</span>
+  <h2>El número que<br/>justifica cada <em>centavo.</em></h2>
+
+  <div class="g2" style="gap:2rem;margin-top:2rem;align-items:start">
+    <!-- INPUTS + PROYECCIÓN -->
+    <div>
+      <h4 style="margin-bottom:1rem">📥 Inputs reales Saludsa</h4>
+      <div class="calc" style="margin-bottom:1.5rem">
+        <div class="crow"><span class="cl2">Fuerza comercial total</span><span class="cv cv-b">400 RNs</span></div>
+        <div class="crow"><span class="cl2">RNs pautando hoy (15%)</span><span class="cv cv-r">60 RNs</span></div>
+        <div class="crow"><span class="cl2">Inversión promedio por RN / mes</span><span class="cv cv-r">$60</span></div>
+        <div class="crow"><span class="cl2">Leads generados por RN / mes</span><span class="cv cv-b">16 leads</span></div>
+        <div class="crow"><span class="cl2">Tasa de conversión a venta</span><span class="cv cv-b">8%</span></div>
+        <div class="crow"><span class="cl2">Prima mensual promedio</span><span class="cv cv-b">$90 / mes</span></div>
+        <div class="crow"><span class="cl2">Permanencia promedio del cliente</span><span class="cv cv-b">18 meses</span></div>
+        <div class="crow total"><span class="cl2">LTV por cliente nuevo</span><span class="cv cv-y">$90 × 18 = $1,620</span></div>
+      </div>
+
+      <h4 style="margin-bottom:1rem">📤 Proyección con Copiloto (40% adopción)</h4>
+      <div class="calc">
+        <div class="crow"><span class="cl2">RNs adicionales activos en digital</span><span class="cv cv-g">+100 RNs</span></div>
+        <div class="crow"><span class="cl2">Leads adicionales / mes</span><span class="cv cv-g">+1,600 leads</span></div>
+        <div class="crow"><span class="cl2">Ventas adicionales / mes (8%)</span><span class="cv cv-g">+128 ventas</span></div>
+        <div class="crow"><span class="cl2">Valor LTV mensual incremental</span><span class="cv cv-g">128 × $1,620 = $207,360</span></div>
+        <div class="crow"><span class="cl2">Primas nuevas anuales</span><span class="cv cv-g">128 × 12 × $90 = $138,240</span></div>
+        <div class="crow total"><span class="cl2">Valor bruto incremental anualizado</span><span class="cv cv-y">~$2,490,000</span></div>
+      </div>
+    </div>
+
+    <!-- ESCENARIOS ROI -->
+    <div style="display:flex;flex-direction:column;gap:1.1rem">
+      <h4>📊 Escenarios de retorno</h4>
+
+      <div class="card card-y">
+        <div style="font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--y);margin-bottom:.85rem">Escenario conservador · Margen 20%</div>
+        <div class="calc">
+          <div class="crow"><span class="cl2">Valor bruto incremental anual</span><span class="cv cv-g">$2,490,000</span></div>
+          <div class="crow"><span class="cl2">Margen Saludsa aplicado</span><span class="cv cv-y">× 20%</span></div>
+          <div class="crow"><span class="cl2">Beneficio incremental anual</span><span class="cv cv-g">$498,000</span></div>
+          <div class="crow"><span class="cl2">Inversión total año 1</span><span class="cv cv-r">$15,420</span></div>
+          <div class="crow total"><span class="cl2">ROI año 1</span><span class="cv cv-g">32x</span></div>
+        </div>
+      </div>
+
+      <div class="card card-g">
+        <div style="font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g);margin-bottom:.85rem">Escenario realista · Margen 35%</div>
+        <div class="calc">
+          <div class="crow"><span class="cl2">Valor bruto incremental anual</span><span class="cv cv-g">$2,490,000</span></div>
+          <div class="crow"><span class="cl2">Margen Saludsa aplicado</span><span class="cv cv-g">× 35%</span></div>
+          <div class="crow"><span class="cl2">Beneficio incremental anual</span><span class="cv cv-g">$871,500</span></div>
+          <div class="crow"><span class="cl2">Inversión total año 1</span><span class="cv cv-r">$15,420</span></div>
+          <div class="crow total"><span class="cl2">ROI año 1</span><span class="cv cv-g">56x</span></div>
+        </div>
+      </div>
+
+      <div class="note ng"><strong>Payback:</strong> La inversión de $15,000 se recupera en aproximadamente <strong style="color:var(--g)">11 días de operación</strong> al margen conservador del 20%.</div>
+
+      <div class="g2" style="gap:.75rem">
+        <div class="bn"><div class="bv" style="background:linear-gradient(135deg,var(--wh),var(--r));-webkit-background-clip:text;-webkit-text-fill-color:transparent">$15K</div><div class="bl">Inversión única</div></div>
+        <div class="bn"><div class="bv" style="background:linear-gradient(135deg,var(--wh),var(--g));-webkit-background-clip:text;-webkit-text-fill-color:transparent">$498K</div><div class="bl">Beneficio año 1</div></div>
+        <div class="bn"><div class="bv" style="background:linear-gradient(135deg,var(--wh),var(--y));-webkit-background-clip:text;-webkit-text-fill-color:transparent">11 días</div><div class="bl">Payback</div></div>
+        <div class="bn"><div class="bv" style="font-size:2rem;background:linear-gradient(135deg,var(--wh),var(--g));-webkit-background-clip:text;-webkit-text-fill-color:transparent">32x</div><div class="bl">ROI conservador</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WATERFALL -->
+  <div style="margin-top:2.5rem">
+    <h4 style="margin-bottom:.5rem">📈 Cascada de valor — de la inversión al beneficio</h4>
+    <p style="font-size:.78rem;color:var(--mu);margin-bottom:1.5rem">Cada columna representa un paso del valor que genera el Copiloto.</p>
+    <div id="wfwrap" class="wf-wrap">
+      <div class="wf-col"><div class="wfv" style="color:var(--r)">$15K</div><div class="wfb" data-h="3" style="height:0;background:rgba(227,6,19,.4);border:1px solid rgba(227,6,19,.5)"></div><div class="wfl">Inversión<br/>Desarrollo</div></div>
+      <div class="wf-col"><div class="wfv" style="color:var(--b)">+100</div><div class="wfb" data-h="20" style="height:0;background:rgba(37,99,235,.4);border:1px solid rgba(37,99,235,.5)"></div><div class="wfl">RNs nuevos<br/>en digital</div></div>
+      <div class="wf-col"><div class="wfv" style="color:var(--y)">+1,600</div><div class="wfb" data-h="50" style="height:0;background:rgba(245,197,24,.3);border:1px solid rgba(245,197,24,.5)"></div><div class="wfl">Leads extra<br/>por mes</div></div>
+      <div class="wf-col"><div class="wfv" style="color:var(--g)">+128</div><div class="wfb" data-h="75" style="height:0;background:rgba(0,212,140,.3);border:1px solid rgba(0,212,140,.5)"></div><div class="wfl">Ventas nuevas<br/>por mes</div></div>
+      <div class="wf-col"><div class="wfv" style="color:var(--g)">$498K+</div><div class="wfb" data-h="100" style="height:0;background:linear-gradient(180deg,rgba(0,212,140,.55),rgba(0,212,140,.2));border:1px solid rgba(0,212,140,.6)"></div><div class="wfl">Beneficio anual<br/>(margen 20%)</div></div>
+    </div>
+    <div style="height:1px;background:var(--br)"></div>
+  </div>
+</div>
+</section>
+
+<!-- ════ DESARROLLO ════ -->
+<section class="sec" id="desarrollo">
+<div class="inner rv">
+  <span class="lbl lb">Inversión · Desarrollo · 8 Semanas</span>
+  <h2>Lo que cuesta<br/>construirlo — y<br/><em>cuándo está listo.</em></h2>
+
+  <div class="g2" style="gap:2rem;margin-top:2rem;align-items:start">
+    <div>
+      <h4 style="margin-bottom:1rem">💼 Honorarios de desarrollo</h4>
+      <div class="calc" style="margin-bottom:1.5rem">
+        <div class="crow"><span class="cl2">Fase Setup — Orquestación y arquitectura</span><span class="cv cv-b">150 horas</span></div>
+        <div class="crow"><span class="cl2">Fase Entrenamiento — Fine-tuning Saludsa</span><span class="cv cv-p">50 horas</span></div>
+        <div class="crow"><span class="cl2">Total horas de desarrollo</span><span class="cv cv-y">200 horas</span></div>
+        <div class="crow"><span class="cl2">Tarifa promedio por hora</span><span class="cv cv-y">$75 / hora</span></div>
+        <div class="crow total"><span class="cl2">Honorarios totales de desarrollo</span><span class="cv cv-g">$15,000</span></div>
+      </div>
+
+      <h4 style="margin-bottom:.85rem">🗓️ Cronograma — 8 semanas</h4>
+      <div class="tl-h">
+        <div class="tw tw-s">Sem 1<br/>Setup</div>
+        <div class="tw tw-s">Sem 2<br/>Setup</div>
+        <div class="tw tw-s">Sem 3<br/>Integr.</div>
+        <div class="tw tw-s">Sem 4<br/>Integr.</div>
+        <div class="tw tw-t">Sem 5<br/>Testing</div>
+        <div class="tw tw-t">Sem 6<br/>Entren.</div>
+        <div class="tw tw-t">Sem 7<br/>Ajustes</div>
+        <div class="tw tw-g">Sem 8<br/>🚀 Go!</div>
+      </div>
+      <div class="g3" style="gap:.65rem;margin-top:.85rem">
+        <div style="display:flex;align-items:center;gap:.5rem"><div style="width:10px;height:10px;background:rgba(37,99,235,.6);border-radius:2px;flex-shrink:0"></div><span style="font-size:.72rem;color:var(--mu)">Setup (150h)</span></div>
+        <div style="display:flex;align-items:center;gap:.5rem"><div style="width:10px;height:10px;background:rgba(124,58,237,.6);border-radius:2px;flex-shrink:0"></div><span style="font-size:.72rem;color:var(--mu)">Entrenamiento (50h)</span></div>
+        <div style="display:flex;align-items:center;gap:.5rem"><div style="width:10px;height:10px;background:rgba(0,212,140,.55);border-radius:2px;flex-shrink:0"></div><span style="font-size:.72rem;color:var(--mu)">Lanzamiento</span></div>
+      </div>
+
+      <h4 style="margin-top:1.5rem;margin-bottom:.85rem">✅ Entregables incluidos</h4>
+      <div style="display:flex;flex-direction:column;gap:.4rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:.5rem .85rem;background:rgba(255,255,255,.025);border-radius:8px"><span style="font-size:.78rem;color:var(--tx)">Agente Pep — Estratega + Meta Ads</span><span class="chip cb" style="margin:0">Setup</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:.5rem .85rem;background:rgba(255,255,255,.025);border-radius:8px"><span style="font-size:.78rem;color:var(--tx)">Agente Zizu — Creativo + A/B testing</span><span class="chip cb" style="margin:0">Setup</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:.5rem .85rem;background:rgba(255,255,255,.025);border-radius:8px"><span style="font-size:.78rem;color:var(--tx)">Integración Telegram + Voice Notes</span><span class="chip cb" style="margin:0">Setup</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:.5rem .85rem;background:rgba(255,255,255,.025);border-radius:8px"><span style="font-size:.78rem;color:var(--tx)">Memoria persistente por RN</span><span class="chip cb" style="margin:0">Setup</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:.5rem .85rem;background:rgba(255,255,255,.025);border-radius:8px"><span style="font-size:.78rem;color:var(--tx)">Fine-tuning con datos reales Saludsa</span><span class="chip cp" style="margin:0">Entrenamiento</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:.5rem .85rem;background:rgba(255,255,255,.025);border-radius:8px"><span style="font-size:.78rem;color:var(--tx)">Capacitación piloto (15 RNs)</span><span class="chip cp" style="margin:0">Entrenamiento</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:.5rem .85rem;background:rgba(255,255,255,.025);border-radius:8px"><span style="font-size:.78rem;color:var(--tx)">Dashboard reportes gerenciales</span><span class="chip cp" style="margin:0">Entrenamiento</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:.65rem .85rem;background:rgba(0,212,140,.06);border:1px solid rgba(0,212,140,.2);border-radius:8px;margin-top:.25rem"><span style="font-size:.8rem;font-weight:700;color:var(--wh)">Migración Microsoft Teams</span><span class="chip cg" style="margin:0">Post go-live</span></div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:1.25rem">
+      <div class="pc" style="height:220px">
+        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=700&q=80&auto=format&fit=crop" alt="dev"/>
+        <div class="pcov"></div>
+        <div class="pct"><h4>8 semanas · 200 horas</h4><p>De arquitectura a sistema completo listo para escalar a 400 RNs</p></div>
+      </div>
+
+      <div class="card card-b">
+        <h4 style="margin-bottom:1rem">💰 Costo total año 1</h4>
+        <div class="calc">
+          <div class="crow"><span class="cl2">Honorarios desarrollo (200h × $75)</span><span class="cv cv-r">$15,000</span></div>
+          <div class="crow"><span class="cl2">APIs IA — 12 meses operación</span><span class="cv cv-r">$420</span></div>
+          <div class="crow"><span class="cl2">Infraestructura adicional</span><span class="cv cv-r">$0</span></div>
+          <div class="crow total"><span class="cl2">Inversión total año 1</span><span class="cv cv-y">$15,420</span></div>
+        </div>
+        <div class="g2" style="gap:.75rem;margin-top:1rem">
+          <div class="bn"><div class="bv" style="background:linear-gradient(135deg,var(--wh),var(--r));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:2.2rem">$15K</div><div class="bl">Pago único dev</div></div>
+          <div class="bn"><div class="bv" style="background:linear-gradient(135deg,var(--wh),var(--g));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:2.2rem">$35</div><div class="bl">Operación / mes</div></div>
+        </div>
+      </div>
+
+      <div class="qt">
+        <p class="qp">"La inversión de <em>$15,000</em> se recupera en <em>11 días</em> de operación. El año 1 genera $498,000 de beneficio — conservador."</p>
+        <div class="qa">— Proyección con datos reales Saludsa · 400 RNs · Mayo 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESUMEN FINAL -->
+  <div class="roi-box" style="margin-top:2.5rem">
+    <span class="lbl lg">Resumen Ejecutivo · Todo en un vistazo</span>
+    <p style="font-size:.88rem;color:rgba(255,255,255,.38);max-width:850px;margin-top:.35rem">Con base en los datos reales de Saludsa, llevando la adopción digital del 15% al 40% con Pep y Zizu.</p>
+    <div class="roi-grid">
+      <div><div class="rv2" style="background:linear-gradient(135deg,var(--wh),var(--r));-webkit-background-clip:text;-webkit-text-fill-color:transparent">+100 RNs</div><div class="rl">Nuevos en digital</div></div>
+      <div><div class="rv2" style="background:linear-gradient(135deg,var(--wh),var(--y));-webkit-background-clip:text;-webkit-text-fill-color:transparent">+128</div><div class="rl">Ventas nuevas / mes</div></div>
+      <div><div class="rv2" style="background:linear-gradient(135deg,var(--wh),var(--g));-webkit-background-clip:text;-webkit-text-fill-color:transparent">$2.49M</div><div class="rl">Valor bruto anual</div></div>
+      <div><div class="rv2" style="background:linear-gradient(135deg,var(--wh),var(--b));-webkit-background-clip:text;-webkit-text-fill-color:transparent">32x</div><div class="rl">ROI conservador</div></div>
+    </div>
+    <div class="roi-sep">
+      <div><div class="rsv" style="color:var(--y)">$15,000</div><div class="rsl">Inversión única</div></div>
+      <div><div class="rsv" style="color:var(--g)">11 días</div><div class="rsl">Payback</div></div>
+      <div><div class="rsv" style="color:var(--wh)">8 semanas</div><div class="rsl">Implementación</div></div>
+      <div><div class="rsv" style="color:var(--g)">$35 / mes</div><div class="rsl">Operación IA</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CLOSING -->
+<div class="closing">
+  <span class="lbl ly" style="display:block;text-align:center;margin-bottom:1rem">La decisión</span>
+  <h2>$15K inviertos.<br/><em>$498K</em> al año.<br/>11 días de payback.</h2>
+  <p class="cl-sub">Tu Agencia de Marketing de Bolsillo. Pep estratega. Zizu creativo. +100 RNs en digital. +128 ventas cada mes. Para siempre.</p>
+  <div style="margin-top:2.5rem;display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap">
+    <span class="chip cg">MVP activo hoy</span>
+    <span class="chip cy">8 semanas al aire</span>
+    <span class="chip cr">ROI 32x conservador</span>
+    <span class="chip cb">$35/mes operación</span>
+    <span class="chip cp">400 RNs · potencial total</span>
+  </div>
+</div>
+
+<footer>
+  <p>Saludsa · Tu Agencia de Marketing de Bolsillo · Pep & Zizu · Concurso IA 2025 · Confidencial</p>
+  <p>Datos reales Saludsa · 400 RNs · Generado por <strong>ORION ⭐</strong> · Mayo 2026</p>
+</footer>
+
+<script>
+/* PROGRESS + NAV */
+window.addEventListener('scroll',()=>{
+  const p=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  document.getElementById('bar').style.width=p+'%';
+  const ids=['hero','flujo','pep','zizu','situacion','roi','desarrollo'];
+  const nav=document.querySelectorAll('.np');
+  ids.forEach((id,i)=>{
+    const el=document.getElementById(id);
+    if(!el)return;
+    const r=el.getBoundingClientRect();
+    if(r.top<=130&&r.bottom>0){nav.forEach(n=>n.classList.remove('a'));if(nav[i])nav[i].classList.add('a')}
+  });
+});
+
+/* FLOW STEPS */
+const fsteps=[
+  'El RN describe lo que necesita en lenguaje natural — producto, ciudad, objetivo y presupuesto. Sin formularios. Voice notes también aceptados.',
+  'Si el RN graba un audio, Whisper lo transcribe en segundos con alta precisión. El RN puede estar en campo y mandar un voice note de 30 segundos.',
+  'Pep interpreta el brief, valida las variables clave y propone: audiencia, presupuesto óptimo, duración y objetivo de la campaña.',
+  'Zizu genera los artes publicitarios y los copies más persuasivos para el producto y la audiencia. Mínimo 2 variantes A/B automáticas.',
+  'Pep muestra al RN la preview completa: creatividad de Zizu, copy, audiencia, presupuesto y duración. Todo en lenguaje simple.',
+  'El RN dice “sí” o “lanzar”. Aprobación humana obligatoria por diseño — ninguna campaña se activa sin esta confirmación explícita.',
+  'Campaña activa en Meta Ads en segundos. Pep monitorea métricas diariamente. Zizu genera variantes adicionales si el rendimiento mejora.'
+];
+function sf(el,i){
+  document.querySelectorAll('.fstep').forEach(s=>s.classList.remove('on'));
+  el.classList.add('on');
+  const d=document.getElementById('finfo');
+  d.textContent=fsteps[i];d.classList.add('show');
+}
+
+/* REVEAL */
+const rvEls=document.querySelectorAll('.rv');
+const rvObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');rvObs.unobserve(e.target)}})},{threshold:.08});
+rvEls.forEach(e=>rvObs.observe(e));
+
+/* FUNNEL BARS */
+const fobs=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.flbg[data-w]').forEach(b=>{b.style.width=b.dataset.w+'%'});
+      fobs.disconnect();
+    }
+  });
+},{threshold:.3});
+const fn=document.getElementById('funnelNow');
+if(fn)fobs.observe(fn);
+
+/* WATERFALL */
+const wfobs=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.wfb').forEach(b=>{b.style.height=(parseInt(b.dataset.h)/100*220)+'px'});
+      wfobs.disconnect();
+    }
+  });
+},{threshold:.3});
+const wf=document.getElementById('wfwrap');
+if(wf)wfobs.observe(wf);
+</script>
+</body>
+</html>
